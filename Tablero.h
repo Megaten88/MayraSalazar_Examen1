@@ -15,5 +15,4 @@ public:
 	void printBoard();
 	void atax(int,int,int,int,char);
 	bool getEnd();
-
 };

@@ -85,47 +85,102 @@ bool Tablero::getEnd(){
 void Tablero::atax(int lastfil, int lastcol,int fil, int col, char choice){
 	if (board[lastfil][lastcol] == choice) 
 	{
-		if ()
-		{
-			if (fil == 0 || fil == 10 || col == 0 || fil == 10)
-			{ 
-				 if (fil == 0) {
-	                if (col == 0) {
-	                    for (int i = 0; i <= fil + 1; i++) {
-	                        for (int j = 0; j <= col + 1; j++) {
-	                        	if (board[i][j] != choice && board[i][j] != ' ')
-	                        	{
-	                        		board[i][j] = choice;
-	                        	}
-	                        }
-	                    }
-	                } else if (col == 10) {
-	                    for (int i = 0; i <= fil + 1; i++) {
-	                        for (int j = col; j >= col - 1; j--) {
-	                          if (board[i][j] != choice && board[i][j] != ' ')
-	                          {
-	                          	board[i][j] = choice;
-	                          }
-	                        }
-	                    }
-	                } else {
-	                    for (int i = 0; i <= fil + 1; i++) {
-	                        for (int j = col - 1; j <= col + 1; j++) {
-	                        	if (board[i][j] != choice && board[i][j] != ' ')
-	                        	{
-	                        		board[i][j] = choice;
-	                        	}
+		if (fil == 0 || fil == 10 || col == 0 || fil == 10)
+		{ 
+			if (fil == 0) {
+	            if (col == 0) {
+	                for (int i = 0; i <= fil + 1; i++) {
+	                    for (int j = 0; j <= col + 1; j++) {
+	                        if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                        	board[i][j] = choice;
 	                        }
 	                    }
 	                }
-	            }	
-			}else{
-
-			}
-			
+	            } else if (col == 10) {
+	                for (int i = 0; i <= fil + 1; i++) {
+	                    for (int j = col; j >= col - 1; j--) {
+	                        if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                          	board[i][j] = choice;
+	                        }
+	                    }
+	                }
+	            } else {
+	                for (int i = 0; i <= fil + 1; i++) {
+	                    for (int j = col - 1; j <= col + 1; j++) {
+	                        if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                        	board[i][j] = choice;
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	        else if (fil == 10) {
+                if (col == 0) {
+                    for (int i = fil; i >= fil - 1; i--) {
+                        for (int j = 0; j <= col + 1; j++) {
+                            if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                        	board[i][j] = choice;
+	                        }
+                        }
+                    }
+                } else if (col == 10) {
+                    for (int i = fil; i >= fil - 1; i--) {
+                        for (int j = col; j >= col - 1; j--) {
+                            if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                        	board[i][j] = choice;
+	                        }
+                        }
+                    }
+                } else {
+                    for (int i = fil; i >= fil - 1; i--) {
+                        for (int j = col - 1; j <= col + 1; j++) {
+                            if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                        	board[i][j] = choice;
+	                        }
+                        }
+                    }
+                }
+            }
+            else {
+                if (fil != 0 && col == 0) {
+                    for (int i = fil - 1; i <= fil + 1; i++) {
+                        for (int j = 0; j <= col + 1; j++) {
+                            if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                        	board[i][j] = choice;
+	                        }
+                        }
+                    }
+                } else if (fil != 0 && col == matriz.length - 1) {
+                    for (int i = fil - 1; i <= fil + 1; i++) {
+                        for (int j = col; j >= col - 1; j--) {
+                            if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                        	board[i][j] = choice;
+	                        }
+                        }
+                    }
+                }
+            } 	if (board[i][j] != choice && board[i][j] != ' ')
+	                        {
+	                        	board[i][j] = choice;
+	                        }
 		}else{
-			cout<<"Hay una pieza por medio. Movimiento no válido.";
-		}
+			for (int i = fil - 1; i <= fil + 1; i++) {
+                for (int col = y - 1; col <= y + 1; col++) {
+                    if (board[i][j] != choice && board[i][j] != ' ')
+	                {
+	                    board[i][j] = choice;
+	                }
+                }
+            }
+		}	
 	}else{
 		cout<<"Debes tomar una pieza propia."<<endl;
 	}
