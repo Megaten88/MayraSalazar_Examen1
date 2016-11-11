@@ -38,14 +38,15 @@ void Tablero::move(int fil, int col){
 		cout<<"Ingresó una posición no válida"<<endl;
 	}
 }
-void Tablero::atax(int lastfil, int lastcol, int fil, int col, char choice){
+void Tablero::atax(int lastfil, int lastcol,int fil, int col, char choice){
 
 }
 void Tablero::printBoard(){
 	for (int i = 0; i < 11; ++i){
 		for (int j = 0; j < 11; ++j){
-			/* code */
+			cout<<"[" <<board[i][j]<<"]";
 		}
+		cout<<endl;
 	}
 }
 void Tablero::ganar(){
