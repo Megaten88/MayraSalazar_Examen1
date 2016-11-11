@@ -3,6 +3,8 @@
 using std::cout;
 using std::endl;
 Tablero::Tablero(){
+	end = false;
+	player = false;
 	board = new char*[11];
 	for (int i = 0; i < 11; ++i)
 	{
@@ -36,25 +38,15 @@ bool Tablero::turn(){
 	return player;
 }
 void Tablero::move(int lastfil, int lastcol,int fil, int col){
-	if ((x >= 0 && x <= 10) && (y >= 0 && y <= 10)){
+	if ((fil >= 0 && fil <= 10) && (col >= 0 && col <= 10)){
 		if (player){
-			Tablero::ganar(Tablero::getEnd());
 			Tablero::atax(lastfil,lastcol,fil,col, '+');
-			Tablero::ganar(Tablero::getEnd());
 		}else{
-			Tablero::ganar(Tablero::getEnd());
 			Tablero::atax(lastfil,lastcol,fil,col,'#');
-			Tablero::ganar(Tablero::getEnd());
-		}	
+		}
+		Tablero::ganar(Tablero::getEnd());	
 	}else{
 		cout<<"Ingresó una posición no válida"<<endl;
-	}
-}
-void Tablero::atax(int lastfil, int lastcol,int fil, int col, char choice){
-	if(board[lastfil][lastcol] == choice){
-
-	}else{
-		cout<<"Tienes que mover una pieza tuya."<<endl;
 	}
 }
 void Tablero::printBoard(){
@@ -89,4 +81,53 @@ void Tablero::setEnd(bool gameEnd){
 }
 bool Tablero::getEnd(){
 	return end;
+}
+void Tablero::atax(int lastfil, int lastcol,int fil, int col, char choice){
+	if (board[lastfil][lastcol] == choice) 
+	{
+		if ()
+		{
+			if (fil == 0 || fil == 10 || col == 0 || fil == 10)
+			{ 
+				 if (fil == 0) {
+	                if (col == 0) {
+	                    for (int i = 0; i <= fil + 1; i++) {
+	                        for (int j = 0; j <= col + 1; j++) {
+	                        	if (board[i][j] != choice && board[i][j] != ' ')
+	                        	{
+	                        		board[i][j] = choice;
+	                        	}
+	                        }
+	                    }
+	                } else if (col == 10) {
+	                    for (int i = 0; i <= fil + 1; i++) {
+	                        for (int j = col; j >= col - 1; j--) {
+	                          if (board[i][j] != choice && board[i][j] != ' ')
+	                          {
+	                          	board[i][j] = choice;
+	                          }
+	                        }
+	                    }
+	                } else {
+	                    for (int i = 0; i <= fil + 1; i++) {
+	                        for (int j = col - 1; j <= col + 1; j++) {
+	                        	if (board[i][j] != choice && board[i][j] != ' ')
+	                        	{
+	                        		board[i][j] = choice;
+	                        	}
+	                        }
+	                    }
+	                }
+	            }	
+			}else{
+
+			}
+			
+		}else{
+			cout<<"Hay una pieza por medio. Movimiento no válido.";
+		}
+	}else{
+		cout<<"Debes tomar una pieza propia."<<endl;
+	}
+
 }

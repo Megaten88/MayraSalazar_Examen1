@@ -3,5 +3,7 @@
 int main(int argc, char const *argv[])
 {
 	Tablero* board = new Tablero();
-	return 0;
+	board->printBoard();
+	board-> ~Tablero();
+	return 0;	
 }
