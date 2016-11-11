@@ -10,9 +10,7 @@ int main(int argc, char const *argv[])
 	int fil;
 	int col;
 	Tablero* board = new Tablero();
-	board-> ~Tablero();
 	do{
-		board-> turn();
 		if (board-> turn())
 		{
 			cout<<"Turno del Player 1"<<endl;
@@ -26,8 +24,9 @@ int main(int argc, char const *argv[])
 		cout<< "Ingrese la nueva cordenada de la pieza = Fil Col: ";
 		cin>>fil;
 		cin>>col;
-		board-> mover(lastfil,lastcol,fil,col);
+		board-> move(lastfil,lastcol,fil,col);
 		board-> ganar(board->getEnd());
 	}while(board->getEnd() == false);
+	board-> ~Tablero();
 	return 0;	
 }

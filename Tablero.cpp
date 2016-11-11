@@ -40,7 +40,126 @@ bool Tablero::turn(){
 void Tablero::move(int lastfil, int lastcol,int fil, int col){
 	if ((fil >= 0 && fil <= 10) && (col >= 0 && col <= 10)){
 		if (player){
-			Tablero::atax(lastfil,lastcol,fil,col, '+');
+			if (lastfil == 0 || lastfil == 10 || lastcol == 0 || lastfil == 10)
+			{ 
+				if (lastfil == 0) {
+		            if (lastcol == 0) {
+		                for (int i = 0; i <= lastfil + 2; i++) {
+		                    for (int j = 0; j <= lastcol + 2; j++) {
+		                        if (board[i][j] == ' ')
+		                        {
+		                        	if (i == fil && j == col)
+		                        	{
+		                        		Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                        	}
+		                        }
+		                    }
+		                }
+		            } else if (lastcol == 10) {
+		                for (int i = 0; i <= lastfil + 2; i++) {
+		                    for (int j = lastcol; j >= lastcol - 2; j--) {
+		                        if (board[i][j] == ' ')
+		                        {
+		                        	if (i == fil && j == col)
+		                        	{
+		                        		Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                        	}
+		                        }
+		                    }
+		                }
+		            } else {
+		                for (int i = 0; i <= lastfil + 2; i++) {
+		                    for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+		                        if (board[i][j] == ' ')
+		                        {
+		                        	if (i == fil && j == col)
+		                        	{
+		                        		Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                        	}
+		                        }
+		                    }
+		                }
+		            }
+		        }
+		        else if (lastfil == 10) {
+	                if (lastcol == 0) {
+	                    for (int i = lastfil; i >= lastfil - 2; i--) {
+	                        for (int j = 0; j <= lastcol + 2; j++) {
+	                            if (board[i][j] == ' ')
+		                        {
+		                        	if (i == fil && j == col)
+		                        	{
+		                        		Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                        	}
+		                        }
+	                        }
+	                    }
+	                } else if (lastcol == 10) {
+	                    for (int i = lastfil; i >= lastfil - 2; i--) {
+	                        for (int j = lastcol; j >= lastcol - 2; j--) {
+	                            if (board[i][j] == ' ')
+		                        {
+		                        	if (i == fil && j == col)
+		                        	{
+		                        		Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                        	}
+		                        }
+	                        }
+	                    }
+	                } else {
+	                    for (int i = lastfil; i >= lastfil - 2; i--) {
+	                        for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+	                            if (board[i][j] == ' ')
+		                        {
+		                        	if (i == fil && j == col)
+		                        	{
+		                        		Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                        	}
+		                        }
+	                        }
+	                    }
+	                }
+	            }
+	            else {
+	                if (lastfil != 0 && lastcol == 0) {
+	                    for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+	                        for (int j = 0; j <= lastcol + 2; j++) {
+	                            if (board[i][j] == ' ')
+		                        {
+		                        	if (i == fil && j == col)
+		                        	{
+		                        		Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                        	}
+		                        }
+	                        }
+	                    }
+	                } else if (lastfil != 0 && lastcol == 10) {
+	                    for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+	                        for (int j = lastcol; j >= lastcol - 2; j--) {
+	                            if (board[i][j] == ' ')
+		                        {
+		                        	if (i == fil && j == col)
+		                        	{
+		                        		Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                        	}
+		                        }
+	                        }
+	                    }
+	                }
+	            }
+			}else{
+				for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+	                for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+	                    if (board[i][j] == ' ')
+		                {
+		                    if (i == fil && j == col)
+		                    {
+		                        Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                    }
+		               	}
+	                }
+	            }
+			}
 		}else{
 			Tablero::atax(lastfil,lastcol,fil,col,'#');
 		}
@@ -59,6 +178,8 @@ void Tablero::printBoard(){
 }
 void Tablero::ganar(bool end){
 	int spaces = 0;
+	int play1 = 0;
+	int play2 = 0;
 	for (int i = 0; i < 11; ++i)
 	{
 		for (int j = 0; j < 11; ++j)
@@ -67,10 +188,25 @@ void Tablero::ganar(bool end){
 			{
 				spaces++;
 			}
+			if (board[i][j] = '+')
+			{
+				play1++;
+			}
+			if (board[i][j] = '#')
+			{
+				play2++;
+			}
 		}
 	}
-	if (spaces > 0)
+	if (spaces > 0 && play1 == play2)
 	{
+		cout<<"Empate!"<<endl;
+		Tablero::setEnd(false);
+	}else if(play1 == 0){
+		cout<<"El jugador 2 gana!"<<endl;
+		Tablero::setEnd(false);
+	}else if(play2 == 0){
+		cout<<"El jugador 1 gana!"<<endl;
 		Tablero::setEnd(false);
 	}else{
 		Tablero::setEnd(true);
@@ -85,6 +221,8 @@ bool Tablero::getEnd(){
 void Tablero::atax(int lastfil, int lastcol,int fil, int col, char choice){
 	if (board[lastfil][lastcol] == choice) 
 	{
+		board[fil][col] = choice;
+		board[lastfil][lastcol] = ' ';
 		if (fil == 0 || fil == 10 || col == 0 || fil == 10)
 		{ 
 			if (fil == 0) {
@@ -157,7 +295,7 @@ void Tablero::atax(int lastfil, int lastcol,int fil, int col, char choice){
 	                        }
                         }
                     }
-                } else if (fil != 0 && col == matriz.length - 1) {
+                } else if (fil != 0 && col == 10) {
                     for (int i = fil - 1; i <= fil + 1; i++) {
                         for (int j = col; j >= col - 1; j--) {
                             if (board[i][j] != choice && board[i][j] != ' ')
@@ -167,13 +305,10 @@ void Tablero::atax(int lastfil, int lastcol,int fil, int col, char choice){
                         }
                     }
                 }
-            } 	if (board[i][j] != choice && board[i][j] != ' ')
-	                        {
-	                        	board[i][j] = choice;
-	                        }
+            }
 		}else{
 			for (int i = fil - 1; i <= fil + 1; i++) {
-                for (int col = y - 1; col <= y + 1; col++) {
+                for (int j = col - 1; j <= col + 1; j++) {
                     if (board[i][j] != choice && board[i][j] != ' ')
 	                {
 	                    board[i][j] = choice;
