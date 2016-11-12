@@ -39,13 +39,16 @@ bool Tablero::turn(){
 }
 void Tablero::move(int lastfil, int lastcol,int fil, int col){
 	if ((fil >= 0 && fil <= 10) && (col >= 0 && col <= 10)){
+		int l1 = lastfil + 1;
+		int l2 = lastfil + 2;
+		int l3 = lastfil - 1;
+		int l4 = lastfil - 2;
+		int c1 = lastcol + 1;
+		int c2 = lastcol + 2;
+		int c3 = lastcol - 1;
+		int c4 = lastcol - 2;
 		if (player){
-			if (lastfil - fil < 2)
-			{
-				/* code */
-			}else{
-				cout<<"Movimiento inválido, solo se puede de dos en dos."<<endl;
-			}
+			Tablero::atax(lastfil,lastcol,fil,col,'+');
 		}else{
 			Tablero::atax(lastfil,lastcol,fil,col,'#');
 		}
@@ -83,11 +86,23 @@ void Tablero::ganar(bool end){
 			}
 		}
 	}
-	if (spaces > 0)
+	if (spaces > 0 && play1 > 0 && play2 > 0)
 	{
 		Tablero::setEnd(false);
-	}else{
+	}else if (play2 <= 0 && spaces > 0)
+	{
+		cout<<"Ganó el jugador 1!"<<endl;
 		Tablero::setEnd(true);
+	}else if (play1<=0 && spaces > 0 )
+	{
+		cout<<"Ganó el jugador 2!"<<endl;
+		Tablero::setEnd(true);
+	}else{
+		if (play1 == play2)
+		{
+			cout<<"Empate"<<endl;
+			Tablero::setEnd(true);
+		}
 	}
 }
 void Tablero::setEnd(bool gameEnd){
