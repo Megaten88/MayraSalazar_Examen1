@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
 		cin>>col;
 		board-> move(lastfil,lastcol,fil,col);
 		board-> ganar(board->getEnd());
-	}while(board->getEnd() == false);
+	}while(board->getEnd() != true);
 	board-> ~Tablero();
 	return 0;	
 }
