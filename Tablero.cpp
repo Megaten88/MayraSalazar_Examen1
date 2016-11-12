@@ -37,21 +37,198 @@ bool Tablero::turn(){
 	player = !player;
 	return player;
 }
+//mover y cambiarr
 void Tablero::move(int lastfil, int lastcol,int fil, int col){
 	if ((fil >= 0 && fil <= 10) && (col >= 0 && col <= 10)){
-		int l1 = lastfil + 1;
-		int l2 = lastfil + 2;
-		int l3 = lastfil - 1;
-		int l4 = lastfil - 2;
-		int c1 = lastcol + 1;
-		int c2 = lastcol + 2;
-		int c3 = lastcol - 1;
-		int c4 = lastcol - 2;
 		if (player){
-			Tablero::atax(lastfil,lastcol,fil,col,'+');
-		}else{
-			Tablero::atax(lastfil,lastcol,fil,col,'#');
-		}
+				if (lastfil == 0 || lastfil == 10 || lastcol == 0 || lastfil == 10)
+				{ 
+					if (lastfil == 0) {
+			            if (lastcol == 0) {
+			                for (int i = 0; i <= lastfil + 2; i++) {
+			                    for (int j = 0; j <= lastcol + 2; j++) {
+			                        if (i == fil && j == col)
+			                        {
+			                        	Tablero::atax(lastfil,lastcol,fil,col,'+');
+			                        }
+			                    }
+			                }
+			            } else if (lastcol == 10) {
+			                for (int i = 0; i <= lastfil + 2; i++) {
+			                    for (int j = lastcol; j >= lastcol - 2; j--) {
+			                        if (i == fil && j == col)
+			                        {
+			                        	Tablero::atax(lastfil,lastcol,fil,col,'+');
+			                        }
+			                    }
+			                }
+			            } else {
+			                for (int i = 0; i <= lastfil + 2; i++) {
+			                    for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+			                        if (i == fil && j == col)
+			                        {
+			                        	Tablero::atax(lastfil,lastcol,fil,col,'+');
+			                        }
+			                    }
+			                }
+			            }
+			        }
+			        else if (lastfil == 10) {
+		                if (lastcol == 0) {
+		                    for (int i = lastfil; i >= lastfil - 2; i--) {
+		                        for (int j = 0; j <= lastcol + 2; j++) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                            }
+		                        }
+		                    }
+		                } else if (lastcol == 10) {
+		                    for (int i = lastfil; i >= lastfil - 2; i--) {
+		                        for (int j = lastcol; j >= lastcol - 2; j--) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                            }
+		                        }
+		                    }
+		                } else {
+		                    for (int i = lastfil; i >= lastfil - 2; i--) {
+		                        for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                            }
+		                        }
+		                    }
+		                }
+		            }
+		            else {
+		                if (lastfil != 0 && lastcol == 0) {
+		                    for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+		                        for (int j = 0; j <= lastcol + 2; j++) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                            }
+		                        }
+		                    }
+		                } else if (lastfil != 0 && lastcol == 10) {
+		                    for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+		                        for (int j = lastcol; j >= lastcol - 2; j--) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                            }
+		                        }
+		                    }
+		                }
+		            }
+				}else{
+					for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+		                for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+		                    if (i == fil && j == col)
+		                    {
+		                        Tablero::atax(lastfil,lastcol,fil,col,'+');
+		                    }
+		                }
+		            }
+				}	
+			}else{
+				if (lastfil == 0 || lastfil == 10 || lastcol == 0 || lastfil == 10)
+				{ 
+					if (lastfil == 0) {
+			            if (lastcol == 0) {
+			                for (int i = 0; i <= lastfil + 2; i++) {
+			                    for (int j = 0; j <= lastcol + 2; j++) {
+			                        if (i == fil && j == col)
+			                        {
+			                        	Tablero::atax(lastfil,lastcol,fil,col,'#');
+			                        }
+			                    }
+			                }
+			            } else if (lastcol == 10) {
+			                for (int i = 0; i <= lastfil + 2; i++) {
+			                    for (int j = lastcol; j >= lastcol - 2; j--) {
+			                        if (i == fil && j == col)
+			                        {
+			                        	Tablero::atax(lastfil,lastcol,fil,col,'#');
+			                        }
+			                    }
+			                }
+			            } else {
+			                for (int i = 0; i <= lastfil + 2; i++) {
+			                    for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+			                        if (i == fil && j == col)
+			                        {
+			                        	Tablero::atax(lastfil,lastcol,fil,col,'#');
+			                        }
+			                    }
+			                }
+			            }
+			        }
+			        else if (lastfil == 10) {
+		                if (lastcol == 0) {
+		                    for (int i = lastfil; i >= lastfil - 2; i--) {
+		                        for (int j = 0; j <= lastcol + 2; j++) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'#');
+		                            }
+		                        }
+		                    }
+		                } else if (lastcol == 10) {
+		                    for (int i = lastfil; i >= lastfil - 2; i--) {
+		                        for (int j = lastcol; j >= lastcol - 2; j--) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'#');
+		                            }
+		                        }
+		                    }
+		                } else {
+		                    for (int i = lastfil; i >= lastfil - 2; i--) {
+		                        for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'#');
+		                            }
+		                        }
+		                    }
+		                }
+		            }
+		            else {
+		                if (lastfil != 0 && lastcol == 0) {
+		                    for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+		                        for (int j = 0; j <= lastcol + 2; j++) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'#');
+		                            }
+		                        }
+		                    }
+		                } else if (lastfil != 0 && lastcol == 10) {
+		                    for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+		                        for (int j = lastcol; j >= lastcol - 2; j--) {
+		                            if (i == fil && j == col)
+		                            {
+		                            	Tablero::atax(lastfil,lastcol,fil,col,'#');
+		                            }
+		                        }
+		                    }
+		                }
+		            }
+				}else{
+					for (int i = lastfil - 2; i <= lastfil + 2; i++) {
+		                for (int j = lastcol - 2; j <= lastcol + 2; j++) {
+		                    if (i == fil && j == col)
+		                    {
+		                        Tablero::atax(lastfil,lastcol,fil,col,'#');
+		                    }
+		                }
+		            }
+				}
+			}
 	}else{
 		cout<<"Ingresó una posición no válida"<<endl;
 	}
@@ -76,11 +253,11 @@ void Tablero::ganar(bool end){
 			{
 				spaces++;
 			}
-			if (board[i][j] = '+')
+			if (board[i][j] == '+')
 			{
 				play1++;
 			}
-			if (board[i][j] = '#')
+			if (board[i][j] == '#')
 			{
 				play2++;
 			}
@@ -98,7 +275,7 @@ void Tablero::ganar(bool end){
 		cout<<"Ganó el jugador 2!"<<endl;
 		Tablero::setEnd(true);
 	}else{
-		if (play1 == play2)
+		if (spaces <=0 && play1 == play2)
 		{
 			cout<<"Empate"<<endl;
 			Tablero::setEnd(true);
@@ -111,6 +288,7 @@ void Tablero::setEnd(bool gameEnd){
 bool Tablero::getEnd(){
 	return end;
 }
+//cambiar
 void Tablero::atax(int lastfil, int lastcol,int fil, int col, char choice){
 	if (board[lastfil][lastcol] == choice) 
 	{
